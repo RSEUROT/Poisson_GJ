@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4178834579170111183}
   - component: {fileID: 4178834579170111216}
   - component: {fileID: 4178834579170111180}
+  - component: {fileID: 3122923539783473036}
   m_Layer: 0
   m_Name: JellyFish
   m_TagString: Player
@@ -171,3 +172,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 20
+--- !u!95 &3122923539783473036
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178834579170111218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46516f290f9a08145b9d97533e1a1d9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
