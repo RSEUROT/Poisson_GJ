@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleFishController : MonoBehaviour
+public class SingleFishController : BaseFishController
 {
     public bool StayAroundStartPosition = true;
     public float MaxNextPositionDistance = 5.0f;
     public float MinNextPositionDistance = 1.0f;
     public float DistanceThresholdForTargetDetection = 1.0f;
     public float MaxTimeBeforeChangeTarget = 10.0f;
-    public bool UseAvoidObstacle = false;
     public bool ReOrientFishToMoveDirection = false;
     public float RotationSpeed = 1.0f;
     public float acceleration = 1.0f;
@@ -23,15 +22,17 @@ public class SingleFishController : MonoBehaviour
     private float CurrentTimeBeforeChangeTarget = 0.0f;
 
 
-    void Start()
+    protected override void StartInternal()
     {
+        base.StartInternal();
+
         FishRigidbody = GetComponent<Rigidbody2D>();
         StartPosition = transform.position;
         OriginRotation = transform.rotation;
         ComputeNextPosition();
     }
 
-    void Update()
+    protected override void UpdateInternal()
     {
         float distanceFromArrival = Vector3.Distance(NextPosition, transform.position);
         CurrentTimeBeforeChangeTarget += Time.deltaTime;
@@ -58,9 +59,16 @@ public class SingleFishController : MonoBehaviour
     {
         Vector3 newDirection = NextPosition - transform.position;
         newDirection.Normalize();
-        if (UseAvoidObstacle)
+        if (UseObstacleAvoidance)
         {
-            // TO DO => detect colliders
+            Vector2 computeDirection = new Vector2(newDirection.x, newDirection.y);
+            if(GetObstacleAvoidanceSafeDirection(ref computeDirection))
+            {
+                newDirection.x = computeDirection.x;
+                newDirection.y = computeDirection.y;
+                //ComputeNextPosition();
+                //CurrentTimeBeforeChangeTarget = 0.0f;
+            }
         }
 
         FishRigidbody.AddForce(acceleration * moveSpeed * newDirection * Time.deltaTime, ForceMode2D.Force);
@@ -87,7 +95,9 @@ public class SingleFishController : MonoBehaviour
         }
         else
         {
-            transform.localRotation = Quaternion.Euler(FishRigidbody.velocity.x, FishRigidbody.velocity.y, 0.0f);
+            Vector3 newRotation = new Vector3(FishRigidbody.velocity.x, FishRigidbody.velocity.y, 0.0f);
+            newRotation.Normalize();
+            transform.right = newRotation;
         }
     }
 }
