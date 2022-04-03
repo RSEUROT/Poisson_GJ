@@ -11,9 +11,9 @@ public class Spawner : MonoBehaviour
     public void SpawnObject(List<GameObject> inGameObject)
     {
         objectToSpawn = inGameObject;
-        int rand = Random.Range((int)0, (int)objectToSpawn.Count - 1);
+        int rand = Random.Range((int)0, (int)objectToSpawn.Count);
         GameObject instantiatedObject = Instantiate(inGameObject[rand], gameObject.transform);
-        instantiatedObject.GetComponent<CollectibleFish>().SetParentSpawner(this);
+        instantiatedObject.GetComponent<CollectibleFish>().SetParentSpawner(this, inGameObject[rand]);
         hasObject = true;
     }
 

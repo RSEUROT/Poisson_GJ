@@ -35,6 +35,7 @@ public class GameLoopManager : MonoBehaviour
     List<float> LightBaseIntensity = new List<float>();
     [SerializeField]
     GameObject LightToSwitchOn = null;
+    GameObject[] rocks;
 
     // FISH
     private List<GameObject> CatchedFishPrefabs = new List<GameObject>();
@@ -52,6 +53,14 @@ public class GameLoopManager : MonoBehaviour
         for (int i = 0; i < LightsToSwitchOff.Count; ++i)
         {
             LightBaseIntensity.Add(LightsToSwitchOff[i].GetComponent<Light2D>().intensity);
+        }
+
+
+        rocks = GameObject.FindGameObjectsWithTag("Rock");
+
+        if (rocks.Length == 0)
+        {
+            Debug.Log("No game objects are tagged with 'Enemy'");
         }
     }
 
@@ -86,6 +95,11 @@ public class GameLoopManager : MonoBehaviour
                     for (int i = 0; i < LightsToSwitchOff.Count; ++i)
                     {
                         LightsToSwitchOff[i].SetActive(false);
+                    }
+
+                    for (int i = 0; i < rocks.Length; ++i)
+                    {
+                        rocks[i].SetActive(false);
                     }
 
                     BlackScreen.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
@@ -125,9 +139,10 @@ public class GameLoopManager : MonoBehaviour
         for(int i = 0; i < CatchedFishPrefabs.Count; ++i)
         {
             GameObject fish = Instantiate<GameObject>(CatchedFishPrefabs[i], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20) > 0.0f ? 20.0f : -20.0f, 0.0f), Quaternion.identity);
-            fish.GetComponent<SpriteRenderer>().sortingLayerID = 101;
-            fish.GetComponent<SingleFishController>().enabled = false;
-            fish.AddComponent<EndFishBehaviour>();
+            fish.GetComponent<SpriteRenderer>().sortingOrder = 101;
+            fish.GetComponent<CollectibleFish>().SetLight(true);
+            fish.GetComponent<SingleFishController>().SetIsEndScreen(true);
+            //fish.AddComponent<EndFishBehaviour>();
         }
     }
 

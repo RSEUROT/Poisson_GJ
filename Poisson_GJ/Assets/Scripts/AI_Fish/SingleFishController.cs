@@ -20,6 +20,7 @@ public class SingleFishController : BaseFishController
     private Vector3 StartPosition = Vector3.zero;
     private Vector3 NextPosition = Vector3.zero;
     private float CurrentTimeBeforeChangeTarget = 0.0f;
+    private bool isEndScreen = false;
 
 
     protected override void StartInternal()
@@ -51,8 +52,13 @@ public class SingleFishController : BaseFishController
         Vector3 direction = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 0.0f);
         direction.Normalize();
 
-        Vector3 basePos = StayAroundStartPosition ? StartPosition : transform.position;
+        Vector3 basePos = isEndScreen ? Vector3.zero : StayAroundStartPosition ? StartPosition : transform.position;
         NextPosition = basePos + (direction * Random.Range(MinNextPositionDistance, MaxNextPositionDistance));
+    }
+
+    public void SetIsEndScreen(bool inIsEndScreen)
+    {
+        isEndScreen = true;
     }
 
     private void MoveToTarget()

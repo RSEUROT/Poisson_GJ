@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> fishObject;
     public float spawnerTimer = 0f;
     public float minDistanceForSpawn = 50f;
+    private Vector3 lastPosition;
+    private float speed;
+
+    [SerializeField] public AudioSource PafSound;
+    [SerializeField] private AudioSource OuchSound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +39,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float dist = Vector3.Distance(lastPosition, gameObject.transform.position);
+        speed = dist / Time.deltaTime;
+        lastPosition = gameObject.transform.position;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PafSound.Play();
+        if (speed > 1f && Random.Range(0,10) == 3)
+        {
+            OuchSound.Play();
+        }
     }
 }
