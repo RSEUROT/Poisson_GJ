@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int numberOfCollectedFish = 0;
-    public GameObject fishObject;
+    public List<GameObject> fishObject;
     public float spawnerTimer = 0f;
     public float minDistanceForSpawn = 50f;
 

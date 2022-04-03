@@ -5,13 +5,14 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     float timer = 0f;
-    GameObject objectToSpawn;
+    List<GameObject> objectToSpawn;
     GameObject player;
     bool hasObject = false;
-    public void SpawnObject(GameObject inGameObject)
+    public void SpawnObject(List<GameObject> inGameObject)
     {
         objectToSpawn = inGameObject;
-        GameObject instantiatedObject = Instantiate(inGameObject, gameObject.transform);
+        int rand = Random.Range((int)0, (int)objectToSpawn.Count - 1);
+        GameObject instantiatedObject = Instantiate(inGameObject[rand], gameObject.transform);
         instantiatedObject.GetComponent<CollectibleFish>().SetParentSpawner(this);
         hasObject = true;
     }
@@ -23,7 +24,7 @@ public class Spawner : MonoBehaviour
 
     public void OnObjectDestroyed()
     {
-        timer = 20f;
+        timer = player.GetComponent<PlayerController>().spawnerTimer; ;
         hasObject = false;
         player.GetComponent<PlayerController>().numberOfCollectedFish++;
     }
@@ -31,7 +32,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(gameObject.GetComponent<SpriteRenderer>());
     }
 
     // Update is called once per frame
