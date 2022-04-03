@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.U2D;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -29,6 +31,13 @@ public class GameLoopManager : MonoBehaviour
     [SerializeField]
     private float FadeMaxTime = 3.0f;
     private float FadeTime = 0.0f;
+
+    [SerializeField]
+    private GameObject CanvasUiEndGame = null;
+    [SerializeField]
+    private GameObject CanvasUiEndGame2 = null;
+    [SerializeField]
+    private TextMeshProUGUI ScoreText = null;
 
     [SerializeField]
     List<GameObject> LightsToSwitchOff = new List<GameObject>();
@@ -107,6 +116,9 @@ public class GameLoopManager : MonoBehaviour
                     Camera.main.transform.position = new Vector3(0.0f, 0.0f, Camera.main.transform.position.z);
                     SpawnAllFishes();
                     LightToSwitchOn.SetActive(true);
+                    CanvasUiEndGame.SetActive(true);
+                    CanvasUiEndGame2.SetActive(true);
+                    ScoreText.text = CatchedFishPrefabs.Count.ToString();
                 }
             }
 

@@ -44,6 +44,5 @@ public class IntroOpeningManager : MonoBehaviour
             BlackPanel.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
             SceneManager.LoadScene("MenuScene");
         }
-        Debug.Log(BlackPanel.color.a);
     }
 }

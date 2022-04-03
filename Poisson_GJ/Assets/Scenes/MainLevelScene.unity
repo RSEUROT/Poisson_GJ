@@ -681,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &30517884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8795,10 +8795,10 @@ RectTransform:
   m_Father: {fileID: 30517888}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1132.84, y: -975}
+  m_SizeDelta: {x: 91.55, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366329439
 MonoBehaviour:
@@ -21739,10 +21739,10 @@ RectTransform:
   m_Father: {fileID: 30517888}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 914.225, y: -975}
+  m_SizeDelta: {x: 345.68, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884282537
 MonoBehaviour:
@@ -27156,9 +27156,25 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: InfoText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: ScoreText
+      value: 
+      objectReference: {fileID: 1566720326}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
       propertyPath: FadeMaxTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: CanvasUiEndGame
+      value: 
+      objectReference: {fileID: 1769193943}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: CanvasUiEndGame2
+      value: 
+      objectReference: {fileID: 30517883}
     - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
       propertyPath: LightsToSwitchOff.Array.data[0]
       value: 
@@ -27171,6 +27187,74 @@ PrefabInstance:
       propertyPath: LightsToSwitchOff.Array.data[2]
       value: 
       objectReference: {fileID: 300638266}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].time
+      value: 0.78398013
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].value
+      value: 0.54934394
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[0].inSlope
+      value: -0.57483095
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].inSlope
+      value: -0.6321306
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].inSlope
+      value: -2.543025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[0].outSlope
+      value: -0.57483095
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.054843027
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].outSlope
+      value: -0.6321306
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].outSlope
+      value: -2.543025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261121305027239120, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261121305027239121, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
 --- !u!1 &1067703160
@@ -38202,10 +38286,10 @@ RectTransform:
   m_Father: {fileID: 1769193948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 861.18, y: -1025}
+  m_SizeDelta: {x: 110.15, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566720326
 MonoBehaviour:
@@ -43880,10 +43964,10 @@ RectTransform:
   m_Father: {fileID: 1769193948}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1015.075, y: -1025}
+  m_SizeDelta: {x: 197.64, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711095026
 MonoBehaviour:
@@ -45068,7 +45152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1769193944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48467,11 +48551,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178834579170111217, guid: cb2f6a9e68e122d4a9342c25bcd1c5bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.91
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 4178834579170111217, guid: cb2f6a9e68e122d4a9342c25bcd1c5bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.71
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 4178834579170111217, guid: cb2f6a9e68e122d4a9342c25bcd1c5bb, type: 3}
       propertyPath: m_LocalPosition.z
