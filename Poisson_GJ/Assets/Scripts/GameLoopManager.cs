@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-
 public class GameLoopManager : MonoBehaviour
 {
     private static GameLoopManager instance = null;
@@ -22,8 +23,21 @@ public class GameLoopManager : MonoBehaviour
 
     private float currentTime = 0.0f;
 
+    // black screen
+    [SerializeField]
+    private GameObject BlackScreen = null;
+    [SerializeField]
+    private float FadeMaxTime = 3.0f;
+    private float FadeTime = 0.0f;
+
+    [SerializeField]
+    List<GameObject> LightsToSwitchOff = new List<GameObject>();
+    List<float> LightBaseIntensity = new List<float>();
+    [SerializeField]
+    GameObject LightToSwitchOn = null;
+
     // FISH
-    private int FishCount = 0;
+    private List<GameObject> CatchedFishPrefabs = new List<GameObject>();
 
 
     void Start()
@@ -34,14 +48,58 @@ public class GameLoopManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        for (int i = 0; i < LightsToSwitchOff.Count; ++i)
+        {
+            LightBaseIntensity.Add(LightsToSwitchOff[i].GetComponent<Light2D>().intensity);
+        }
     }
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if(currentTime >= (float)MaxTime)
+        if (currentTime < (float)MaxTime)
         {
-            // launch end
+            currentTime += Time.deltaTime;
+            for (int i = 0; i < LightsToSwitchOff.Count; ++i)
+            {
+                LightsToSwitchOff[i].GetComponent<Light2D>().intensity = LightBaseIntensity[i] - ((currentTime / (float)MaxTime) * LightBaseIntensity[i]);
+            }
+        }
+        if (currentTime >= (float)MaxTime)
+        {
+            for(int i = 0; i < LightsToSwitchOff.Count; ++i)
+            {
+                LightsToSwitchOff[i].SetActive(false);
+            }
+
+            if (FadeTime < FadeMaxTime)
+            {
+                FadeTime += Time.deltaTime;
+                if (FadeTime < FadeMaxTime)
+                {
+
+                    BlackScreen.SetActive(true);
+                    BlackScreen.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, FadeTime / FadeMaxTime);
+                }
+                else
+                {
+                    for (int i = 0; i < LightsToSwitchOff.Count; ++i)
+                    {
+                        LightsToSwitchOff[i].SetActive(false);
+                    }
+
+                    BlackScreen.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+                    Camera.main.GetComponent<CameraController>().enabled = false;
+                    Camera.main.transform.position = new Vector3(0.0f, 0.0f, Camera.main.transform.position.z);
+                    SpawnAllFishes();
+                    LightToSwitchOn.SetActive(true);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ReturnToMainMenu();
+            }
         }
     }
 
@@ -53,16 +111,28 @@ public class GameLoopManager : MonoBehaviour
         float curveValue = LightByTimeCurve.Evaluate(currentTime / (float)MaxTime);
         return curveValue;
     }
-    public void AddFish()
+    public void AddFish(GameObject fishPrefab)
     {
-        FishCount++;
+        CatchedFishPrefabs.Add(fishPrefab);
     }
     public int GetFishCount()
     {
-        return FishCount;
+        return CatchedFishPrefabs.Count;
     }
+
+    private void SpawnAllFishes()
+    {
+        for(int i = 0; i < CatchedFishPrefabs.Count; ++i)
+        {
+            GameObject fish = Instantiate<GameObject>(CatchedFishPrefabs[i], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20) > 0.0f ? 20.0f : -20.0f, 0.0f), Quaternion.identity);
+            fish.GetComponent<SpriteRenderer>().sortingLayerID = 101;
+            fish.GetComponent<SingleFishController>().enabled = false;
+            fish.AddComponent<EndFishBehaviour>();
+        }
+    }
+
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuScene");
     }
 }

@@ -26,30 +26,25 @@ public class BaseFishController : MonoBehaviour
     {
     }
 
-    protected bool GetObstacleAvoidanceSafeDirection(ref Vector2 outDirection)
+    protected Vector2 GetObstacleAvoidanceSafeDirection(Vector2 baseDirection, Vector2 basePosition)
     {
+        Vector2 safeDirection = Vector2.zero;
+
         LayerMask mask = LayerMask.GetMask("Default");
-        RaycastHit2D forwardHit = Physics2D.Raycast(transform.position, outDirection, RaycastDistance, mask);
-        if (forwardHit.transform == null)
+        RaycastHit2D forwardHit = Physics2D.Raycast(transform.position, baseDirection, RaycastDistance, mask);
+        if(forwardHit.transform != null)
         {
-            Vector3 endpos = transform.position + (new Vector3(outDirection.x, outDirection.y, 0.0f) * RaycastDistance);
-            Debug.DrawLine(transform.position, endpos, Color.green, 0.01f);
-            //Debug.Log("forwardHit.transform == null");
-            return false;
-        }
-        else
-        {
-            Vector3 endpos = transform.position + (new Vector3(outDirection.x, outDirection.y, 0.0f) * RaycastDistance);
-            Debug.DrawLine(transform.position, endpos, Color.red, 0.01f);
+            Vector2 dir = basePosition - new Vector2(forwardHit.transform.position.x, forwardHit.transform.position.y);
+            dir.Normalize();
+            safeDirection += dir * 3.0f;
         }
 
-        bool hasFound = false;
         int angleCount = 1;
-        const int maxAngleCount = 36;
-        while(hasFound == false && angleCount < maxAngleCount)
+        const int maxAngleCount = 18;
+        while(angleCount < maxAngleCount)
         {
-            Vector2 positiveDirection = new Vector2(outDirection.x, outDirection.y);
-            Vector2 negativeDirection = new Vector2(outDirection.x, outDirection.y);
+            Vector2 positiveDirection = new Vector2(baseDirection.x, baseDirection.y);
+            Vector2 negativeDirection = new Vector2(baseDirection.x, baseDirection.y);
             float angleDeg = angleCount * RaycastAngleOffset;
             float angle = angleDeg * Mathf.Deg2Rad;
             Vector2 addingDirection = Vector2.zero;
@@ -64,40 +59,24 @@ public class BaseFishController : MonoBehaviour
             RaycastHit2D positiveAngleHit = Physics2D.Raycast(transform.position, positiveDirection, RaycastDistance, mask);
             RaycastHit2D negativeAngleHit = Physics2D.Raycast(transform.position, negativeDirection, RaycastDistance, mask);
 
-            if(positiveAngleHit.transform == null)
+            if (positiveAngleHit.transform != null)
             {
-                Vector3 endpos = transform.position + (new Vector3(positiveDirection.x, positiveDirection.y, 0.0f) * RaycastDistance);
-                Debug.DrawLine(transform.position, endpos, Color.green, 0.01f);
-                //Debug.Log("Change direction from: " + outDirection + " to: " + positiveDirection);
-                outDirection = positiveDirection;
-                hasFound = true;
-                break;
+                Vector2 dir = basePosition - new Vector2(positiveAngleHit.transform.position.x, positiveAngleHit.transform.position.y);
+                dir.Normalize();
+                safeDirection += dir;
             }
-            else
+            if (negativeAngleHit.transform != null)
             {
-                Vector3 endpos = transform.position + (new Vector3(positiveDirection.x, positiveDirection.y, 0.0f) * RaycastDistance);
-                Debug.DrawLine(transform.position, endpos, Color.red, 0.01f);
-            }
-            if (negativeAngleHit.transform == null)
-            {
-                Vector3 endpos = transform.position + (new Vector3(negativeDirection.x, negativeDirection.y, 0.0f) * RaycastDistance);
-                //Debug.Log("Change direction from: " + outDirection + " to: " + negativeDirection);
-                Debug.DrawLine(transform.position, endpos, Color.green, 0.01f);
-                outDirection = negativeDirection;
-                hasFound = true;
-                break;
-            }
-            else
-            {
-                Vector3 endpos = transform.position + (new Vector3(negativeDirection.x, negativeDirection.y, 0.0f) * RaycastDistance);
-                Debug.DrawLine(transform.position, endpos, Color.red, 0.01f);
+                Vector2 dir = basePosition - new Vector2(negativeAngleHit.transform.position.x, negativeAngleHit.transform.position.y);
+                dir.Normalize();
+                safeDirection += dir;
             }
 
             ++angleCount;
         }
 
-        if(!hasFound)
-            Debug.Log("hasFound == false");
-        return true;
+        safeDirection.Normalize();
+
+        return safeDirection;
     }
 }

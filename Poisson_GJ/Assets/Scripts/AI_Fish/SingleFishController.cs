@@ -61,14 +61,10 @@ public class SingleFishController : BaseFishController
         newDirection.Normalize();
         if (UseObstacleAvoidance)
         {
-            Vector2 computeDirection = new Vector2(newDirection.x, newDirection.y);
-            if(GetObstacleAvoidanceSafeDirection(ref computeDirection))
-            {
-                newDirection.x = computeDirection.x;
-                newDirection.y = computeDirection.y;
-                //ComputeNextPosition();
-                //CurrentTimeBeforeChangeTarget = 0.0f;
-            }
+            Vector2 computeSafeDirection = GetObstacleAvoidanceSafeDirection(new Vector2(newDirection.x, newDirection.y), new Vector2(transform.position.x, transform.position.y));
+            newDirection.x += computeSafeDirection.x;
+            newDirection.y += computeSafeDirection.y;
+            newDirection.Normalize();
         }
 
         FishRigidbody.AddForce(acceleration * moveSpeed * newDirection * Time.deltaTime, ForceMode2D.Force);
@@ -93,11 +89,16 @@ public class SingleFishController : BaseFishController
                 transform.Rotate(Vector3.forward, finalAngle * Time.deltaTime);
             }
         }
-        else
+        else if(FishRigidbody.velocity.magnitude > 0.05f)
         {
             Vector3 newRotation = new Vector3(FishRigidbody.velocity.x, FishRigidbody.velocity.y, 0.0f);
             newRotation.Normalize();
             transform.right = newRotation;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ComputeNextPosition();
     }
 }
