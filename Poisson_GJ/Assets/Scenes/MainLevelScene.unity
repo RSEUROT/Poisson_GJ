@@ -27152,21 +27152,9 @@ PrefabInstance:
       value: GameLoopManager
       objectReference: {fileID: 0}
     - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: MaxTime
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: InfoText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 1566720326}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: FadeMaxTime
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
       propertyPath: CanvasUiEndGame
       value: 
@@ -27187,74 +27175,6 @@ PrefabInstance:
       propertyPath: LightsToSwitchOff.Array.data[2]
       value: 
       objectReference: {fileID: 300638266}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].time
-      value: 0.78398013
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].value
-      value: 0.54934394
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[0].inSlope
-      value: -0.57483095
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].inSlope
-      value: -0.6321306
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].inSlope
-      value: -2.543025
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[0].outSlope
-      value: -0.57483095
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].inWeight
-      value: 0.054843027
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].outSlope
-      value: -0.6321306
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].outSlope
-      value: -2.543025
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6204569119887027071, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: LightByTimeCurve.m_Curve.Array.data[2].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 8261121305027239120, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8261121305027239121, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af0f1ad471ff587499564b2651b9e058, type: 3}
 --- !u!1 &1067703160

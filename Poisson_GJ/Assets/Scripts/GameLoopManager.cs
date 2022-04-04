@@ -30,6 +30,8 @@ public class GameLoopManager : MonoBehaviour
     private GameObject BlackScreen = null;
     [SerializeField]
     private float FadeMaxTime = 3.0f;
+    [SerializeField]
+    private float ScoreMaxTime = 3.0f;
     private float FadeTime = 0.0f;
 
     [SerializeField]
@@ -115,6 +117,13 @@ public class GameLoopManager : MonoBehaviour
                     Camera.main.GetComponent<CameraController>().enabled = false;
                     Camera.main.transform.position = new Vector3(0.0f, 0.0f, Camera.main.transform.position.z);
                     SpawnAllFishes();
+                }
+            }
+            else if(FadeTime < ScoreMaxTime)
+            {
+                FadeTime += Time.deltaTime;
+                if (FadeTime >= ScoreMaxTime)
+                {
                     LightToSwitchOn.SetActive(true);
                     CanvasUiEndGame.SetActive(true);
                     CanvasUiEndGame2.SetActive(true);
@@ -150,7 +159,7 @@ public class GameLoopManager : MonoBehaviour
     {
         for(int i = 0; i < CatchedFishPrefabs.Count; ++i)
         {
-            GameObject fish = Instantiate<GameObject>(CatchedFishPrefabs[i], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20) > 0.0f ? 20.0f : -20.0f, 0.0f), Quaternion.identity);
+            GameObject fish = Instantiate<GameObject>(CatchedFishPrefabs[i], new Vector3(Random.Range(-17.5f, 17.5f), Random.Range(-17.5f, 17.5f) > 0.0f ? 17.5f : -17.5f, 0.0f), Quaternion.identity);
             fish.GetComponent<SpriteRenderer>().sortingOrder = 101;
             fish.GetComponent<CollectibleFish>().SetLight(true);
             fish.GetComponent<SingleFishController>().SetIsEndScreen(true);

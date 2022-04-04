@@ -265,24 +265,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576d7883e68f1984498b218d7fb09064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTime: 10
+  MaxTime: 15
   LightByTimeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
+      inSlope: -0.57483095
+      outSlope: -0.57483095
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.78398013
+      value: 0.54934394
+      inSlope: -0.6321306
+      outSlope: -0.6321306
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.054843027
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1
-      outSlope: -1
+      inSlope: -2.543025
+      outSlope: -2.543025
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -291,7 +300,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   BlackScreen: {fileID: 8261121305027239121}
-  FadeMaxTime: 3
+  FadeMaxTime: 0.1
+  ScoreMaxTime: 6
+  CanvasUiEndGame: {fileID: 0}
+  CanvasUiEndGame2: {fileID: 0}
+  ScoreText: {fileID: 0}
   LightsToSwitchOff:
   - {fileID: 0}
   - {fileID: 0}
