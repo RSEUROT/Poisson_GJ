@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float minDistanceForSpawn = 50f;
     private Vector3 lastPosition;
     private float speed;
+    public GameObject followFishObject;
+    GameObject LastFish;
 
     [SerializeField] public AudioSource PafSound;
     [SerializeField] private AudioSource OuchSound;
@@ -43,7 +45,12 @@ public class PlayerController : MonoBehaviour
         speed = dist / Time.deltaTime;
         lastPosition = gameObject.transform.position;
     }
-
+    public void AddFishes()
+    {
+        GameObject instantiatedObject = Instantiate(followFishObject, gameObject.transform.position, Quaternion.identity);
+        instantiatedObject.GetComponent<FollowingFishes>().SetGameObjectToFollow(LastFish != null ? LastFish : gameObject);
+        LastFish = instantiatedObject;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -13561,6 +13561,7 @@ MonoBehaviour:
   - {fileID: 8019387153521925765, guid: ed7e5d2d5eb0f7744aa0f5b3600a48d1, type: 3}
   spawnerTimer: 5
   minDistanceForSpawn: 0
+  followFishObject: {fileID: 250831959028083746, guid: 02913aadf6c22ee46a9cc6aa7405fce5, type: 3}
   PafSound: {fileID: 538458026}
   OuchSound: {fileID: 538458027}
 --- !u!82 &538458026

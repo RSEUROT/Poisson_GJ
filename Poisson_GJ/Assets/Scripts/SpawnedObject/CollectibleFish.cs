@@ -52,12 +52,13 @@ public class CollectibleFish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMovement playermovementComponent;
-        if(collision.gameObject.TryGetComponent<PlayerMovement>(out playermovementComponent))
+        PlayerController playerControllerComponent;
+        if(collision.gameObject.TryGetComponent<PlayerController>(out playerControllerComponent))
         {
             if(gameLoop != null)
                 gameLoop.AddFish(fishPrefab);
             parentSpawner.OnObjectDestroyed();
+            playerControllerComponent.AddFishes();
             yaySounds[Random.Range(0, yaySounds.Length)].Play();
             Destroy(gameObject);
         }
